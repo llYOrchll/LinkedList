@@ -11,9 +11,26 @@ public class LinkedList{
     }
 	        	    
 
-    public void addOrder(int value){
- 
+    public void addOrder(int value){        
+        if(this.head == null){
+            this.head = new Node(value);  
+            numNodes++;
+        }       
+        else if(this.head.getValue() > value){
+            this.addAtHead(value);
+        }
+        else if(this.head.getValue() < value){
+            Node temp = this.head;
+            while(temp.getLink() != null){
+                temp = temp.getLink();
+            }
+            if(temp.getValue() < value){
+                temp.setLink(new Node(value));
+            }
+        }
             
+      
+      
     }         
          
     public void addAtHead(int dat){
@@ -21,6 +38,7 @@ public class LinkedList{
 	this.head = new Node(dat);
 	this.head.setLink(temp);
 	this.numNodes++;
+        
     }
 	
     public void addAtTail(int value){ 

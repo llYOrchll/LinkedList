@@ -34,7 +34,7 @@ public class Main {
                 tamanio = read.nextInt();
                 for(int i = 0;i< tamanio;i++){
                     value = read.nextInt();
-                    a.addAtTail(value);
+                    a.addOrder(value);
                 }
                 
                 a.printList();
@@ -43,7 +43,7 @@ public class Main {
                 tamanio = read.nextInt();
                 for(int i = 0;i< tamanio;i++){
                     value = read.nextInt();
-                    b.addAtTail(value);
+                    b.addOrder(value);
                 }
                 b.printList();
                 break;
