@@ -49,8 +49,7 @@ public class Main {
                 break;
             case 2:
                 break;
-            default: 
-                break;
+            
         }      
     }  
 }
