@@ -16,9 +16,14 @@ public class LinkedList{
             this.head = new Node(value);  
             numNodes++;
         }       
-        else if(this.head.getValue() >= value){
+        else if(value <= this.head.getValue()){
             this.addAtHead(value);
         }
+//        else if(value == this.head.getValue()){
+//            Node temp = this.head;
+//            this.head = new Node(value);
+//            this.head.setLink(temp);
+//        }
         else if(this.head.getValue() < value){           
             Node temp = this.head;
             Node last = this.head;
@@ -28,7 +33,7 @@ public class LinkedList{
                 last = last.getLink();
             }
             if(last.getValue() < value){
-                temp.setLink(new Node(value));
+                last.setLink(new Node(value));
                 numNodes++;
             }else{
                 while(aux != null){
@@ -43,13 +48,16 @@ public class LinkedList{
                 }
             }
             
-        }               
+        }
+//        this.printList();
     }                        
                       
     public void addAtHead(int dat){
 	Node temp = this.head;
-	this.head = new Node(dat);
-	this.head.setLink(temp);
+        Node aux = new Node(dat);
+
+	aux.setLink(temp);
+        this.head = aux;
 	this.numNodes++;
         
     }
@@ -69,7 +77,35 @@ public class LinkedList{
             this.numNodes++;
         }
 }
-			
+    
+    public void deleteRep(){
+        int counter=0;
+       Node temp = this.head;       
+       Node aux = temp.getLink();
+       
+       if(temp.getLink() != null){
+           while(aux != null)
+           {    
+               if(aux.getLink() == null && temp.getValue() == aux.getValue())
+               {
+                   temp.setLink(null);
+                   numNodes--;
+                   break;
+               }
+               if(temp.getValue() == aux.getValue()){
+                   System.out.println("flag");
+                   temp.setLink(aux.getLink());
+                   numNodes--;
+                   
+               }
+               temp = temp.getLink();
+               aux = temp.getLink();
+           }
+       }
+    }
+       
+    
+    
     public void printList(){
 	System.out.println("Number of elements:"+ this.getSize());
 	Node temp = this.head;
