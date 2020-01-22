@@ -5,6 +5,7 @@
  */
 package Main;
 
+import Menu.Menu;
 import Model.LinkedList;
 import java.util.Scanner;
 
@@ -21,12 +22,7 @@ public class Main {
         int value;
         int tamanio;
         
-        System.out.println("Menu");
-        System.out.println("1.- Ingresar listas.");
-        System.out.println("2.- Eliminar elementos repetidos");
-        
-        System.out.println("Eliga opción: ");
-        opc = read.nextInt();
+        opc = Menu.PrintMenu();
         
         switch(opc){
             case 1:
