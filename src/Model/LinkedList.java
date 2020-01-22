@@ -16,23 +16,36 @@ public class LinkedList{
             this.head = new Node(value);  
             numNodes++;
         }       
-        else if(this.head.getValue() > value){
+        else if(this.head.getValue() >= value){
             this.addAtHead(value);
         }
-        else if(this.head.getValue() < value){
+        else if(this.head.getValue() < value){           
             Node temp = this.head;
-            while(temp.getLink() != null){
-                temp = temp.getLink();
+            Node last = this.head;
+            Node aux = temp.getLink();
+            Node aux2 = new Node(value);
+            while(last.getLink() != null){
+                last = last.getLink();
             }
-            if(temp.getValue() < value){
+            if(last.getValue() < value){
                 temp.setLink(new Node(value));
+                numNodes++;
+            }else{
+                while(aux != null){
+                    if(temp.getValue()< value && aux.getValue() >= value){
+                        aux2.setLink(aux);
+                        temp.setLink(aux2);
+                        numNodes++;
+                        break;
+                    }
+                    temp = temp.getLink();
+                    aux = aux.getLink();
+                }
             }
-        }
             
-      
-      
-    }         
-         
+        }               
+    }                        
+                      
     public void addAtHead(int dat){
 	Node temp = this.head;
 	this.head = new Node(dat);
@@ -56,8 +69,7 @@ public class LinkedList{
             this.numNodes++;
         }
 }
-	
-		
+			
     public void printList(){
 	System.out.println("Number of elements:"+ this.getSize());
 	Node temp = this.head;
@@ -77,6 +89,5 @@ public class LinkedList{
         else     
             return false;
     }
-	
-        
+	     
 }
